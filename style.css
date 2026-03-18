@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #eedbb8; /*the background color */
+    z-index: 0;
+}
+
+h1 , p{
+    text-align: center;
+    color: #333;
+}
+
+* {
+    transition: all 0.15s ease-in-out;
+
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+#gallery img {
+    /*I'm not sure about these*/
+    transform-origin: 50% 50%; /* Set the transform origin to the center of the image */
+    mask-origin: 50% 50%; /* Set the mask origin to the center of the image */
+    
+    max-width: 300px;
+    height: fit-content;
+    border-radius: 5px;
+    box-shadow: 5.5px 5.5px 3px rgba(0,0,0,0.175);
+    background-color: #eeeeee; /*make images with transparent backgrounds have white backgrounds*/
+    transform: scale(1);
+
+    transition: transform 0.2s ease-in-out;
+
+    z-index: 0;
+}
+
+#gallery img[data-focused="true"] {
+    box-shadow: 0 0 0 max(100vh, 100vw) rgba(0, 0, 0, .5);
+    position: fixed;
+    transform: translate(0vw, 0vh);
+    max-width: fit-content;
+    max-height: 70vh;
+    z-index: 1000;
+}
+
+/* hover only for non-focused images */
+#gallery img:not([data-focused="true"]):hover {
+    transform: scale(1.035);
+}
