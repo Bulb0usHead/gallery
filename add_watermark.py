@@ -92,17 +92,19 @@ def process_gif(image_path: str, watermark: Image.Image) -> None:
 
 
 def main() -> None:
+    # Get image path from user
+    print("1. Drawing image path")
+    image_path = get_valid_image_path()
+    print("2. Watermark image path")
+
     HERE = os.path.dirname(os.path.abspath(__file__))
-    WATERMARK_PATH = os.path.join(HERE, "watermark.png")
+    WATERMARK_PATH = get_valid_image_path() #os.path.join(HERE, "watermark.png")
 
     # Check if watermark exists
     if not os.path.isfile(WATERMARK_PATH):
         print(f"Error: watermark.png not found in {HERE}")
         print("Please place watermark.png in the same directory as this script.")
         return
-
-    # Get image path from user
-    image_path = get_valid_image_path()
 
     # Open images
     try:
